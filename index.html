@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Do You Love Me?</title>
+
+    <style>
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            min-height: 100vh;
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            background: #ffdce5;
+
+            font-family: Arial, Helvetica, sans-serif;
+
+            overflow: hidden;
+        }
+
+        /* MAIN CARD */
+
+        .container {
+            width: 90%;
+            max-width: 600px;
+
+            min-height: 650px;
+
+            display: flex;
+            flex-direction: column;
+
+            align-items: center;
+            justify-content: center;
+
+            text-align: center;
+
+            position: relative;
+        }
+
+
+        /* CUTE IMAGE */
+
+        .love-picture {
+
+            width: 220px;
+            height: 180px;
+
+            background: white;
+
+            border-radius: 8px;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            font-size: 90px;
+
+            margin-bottom: 30px;
+
+            box-shadow:
+                0 5px 15px rgba(0, 0, 0, 0.08);
+        }
+
+
+        /* QUESTION */
+
+        h1 {
+
+            font-size: 42px;
+
+            color: #111;
+
+            margin-bottom: 35px;
+
+            font-weight: 700;
+        }
+
+
+        /* BUTTON AREA */
+
+        .question-container {
+
+            width: 360px;
+            height: 180px;
+
+            position: relative;
+
+            display: flex;
+
+            justify-content: center;
+
+            align-items: flex-start;
+        }
+
+
+        /* BUTTON */
+
+        button {
+
+            border: none;
+
+            border-radius: 30px;
+
+            padding: 12px 25px;
+
+            font-size: 18px;
+
+            font-weight: bold;
+
+            cursor: pointer;
+
+            transition:
+                transform 0.2s ease,
+                box-shadow 0.2s ease;
+        }
+
+
+        /* YES */
+
+        #yesBtn {
+
+            background: #ff6685;
+
+            color: white;
+
+            position: absolute;
+
+            left: 90px;
+
+            top: 0;
+
+            box-shadow:
+                0 5px 12px rgba(255, 80, 120, 0.3);
+        }
+
+
+        #yesBtn:hover {
+
+            transform: scale(1.08);
+
+            box-shadow:
+                0 7px 18px rgba(255, 80, 120, 0.4);
+        }
+
+
+        /* NO */
+
+        #noBtn {
+
+            background: #ff6685;
+
+            color: white;
+
+            position: absolute;
+
+            left: 205px;
+
+            top: 0;
+
+            box-shadow:
+                0 5px 12px rgba(255, 80, 120, 0.3);
+
+            transition:
+                left 0.15s ease,
+                top 0.15s ease;
+        }
+
+
+        /* HEART RESULT */
+
+        #result {
+
+            display: none;
+
+            flex-direction: column;
+
+            align-items: center;
+
+            justify-content: center;
+
+            animation: appear 0.7s ease;
+        }
+
+
+        .heart {
+
+            font-size: 120px;
+
+            animation: heartbeat 0.8s infinite;
+
+            margin-bottom: 25px;
+        }
+
+
+        #result h2 {
+
+            font-size: 38px;
+
+            color: #111;
+        }
+
+
+        /* HEART ANIMATION */
+
+        @keyframes heartbeat {
+
+            0% {
+                transform: scale(1);
+            }
+
+            50% {
+                transform: scale(1.2);
+            }
+
+            100% {
+                transform: scale(1);
+            }
+
+        }
+
+
+        /* RESULT APPEAR */
+
+        @keyframes appear {
+
+            from {
+
+                opacity: 0;
+
+                transform: scale(0.5);
+            }
+
+            to {
+
+                opacity: 1;
+
+                transform: scale(1);
+            }
+
+        }
+
+
+        /* SMALL SCREENS */
+
+        @media (max-width: 600px) {
+
+            h1 {
+                font-size: 32px;
+            }
+
+            .love-picture {
+
+                width: 180px;
+                height: 150px;
+
+                font-size: 70px;
+            }
+
+            .question-container {
+
+                width: 300px;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+<div class="container">
+
+
+    <!-- QUESTION SECTION -->
+
+    <div id="question">
+
+
+        <!-- Replace this with your actual image later -->
+
+        <div class="love-picture">
+
+            🐻‍❄️ ❤️ 🐻
+
+        </div>
+
+
+        <h1>
+            Do you love me?
+        </h1>
+
+
+        <div
+                class="question-container"
+                id="questionContainer"
+        >
+
+            <button id="yesBtn">
+                Yes
+            </button>
+
+
+            <button id="noBtn">
+                No
+            </button>
+
+        </div>
+
+    </div>
+
+
+
+    <!-- RESULT SECTION -->
+
+    <div id="result">
+
+        <div class="heart">
+            ❤️
+        </div>
+
+        <h2>
+            I knew it! 😍
+        </h2>
+
+    </div>
+
+
+</div>
+
+
+
+<script>
+
+    /* GET ELEMENTS */
+
+    const noBtn =
+        document.getElementById("noBtn");
+
+    const yesBtn =
+        document.getElementById("yesBtn");
+
+    const questionContainer =
+        document.getElementById("questionContainer");
+
+    const question =
+        document.getElementById("question");
+
+    const result =
+        document.getElementById("result");
+
+
+
+    /*
+        NO BUTTON
+
+        When the mouse touches the
+        No button, move it randomly.
+    */
+
+    noBtn.addEventListener("mouseover", () => {
+
+
+        const containerWidth =
+            questionContainer.clientWidth
+            - noBtn.offsetWidth;
+
+
+        const containerHeight =
+            questionContainer.clientHeight
+            - noBtn.offsetHeight;
+
+
+        const newX =
+            Math.floor(
+                Math.random() * containerWidth
+            );
+
+
+        const newY =
+            Math.floor(
+                Math.random() * containerHeight
+            );
+
+
+        noBtn.style.left =
+            `${newX}px`;
+
+
+        noBtn.style.top =
+            `${newY}px`;
+
+    });
+
+
+
+    /*
+        YES BUTTON
+
+        When Yes is clicked,
+        hide the question and
+        show the result.
+    */
+
+    yesBtn.addEventListener("click", () => {
+
+
+        question.style.display =
+            "none";
+
+
+        result.style.display =
+            "flex";
+
+    });
+
+</script>
+
+
+</body>
+
+</html>
